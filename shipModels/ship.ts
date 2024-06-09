@@ -1,14 +1,16 @@
 type CoOrdinates = [string, number]
 type ShipPoints = Array<CoOrdinates> | []
 enum rowValues {
-    "A" = 1,
+    "A" = 0,
     "B",
     "C",
     "D",
     "E",
     "F",
     "G",
-    "H"
+    "H",
+    "I",
+    "J"
 }
 class Ship {
     length: number
