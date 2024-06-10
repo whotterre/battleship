@@ -12,6 +12,14 @@ enum rowValues {
     "I",
     "J"
 }
+function coordsToArr(coord: CoOrdinates){
+    /*
+    Converts 2D co-ordinates to an array index value 
+    Returns computed index
+    */
+    const rowComponent = coord[0]
+    return rowValues[rowComponent] * 10 + coord[1]
+}
 class Ship {
     length: number
     points: ShipPoints
@@ -46,4 +54,4 @@ class Ship {
         return rowValues[rowComponent] * 10 + coord[1]
     }
 }
-export default Ship
+export { Ship, coordsToArr }

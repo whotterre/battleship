@@ -1,5 +1,5 @@
-import Ship from './shipModels/ship'
-
+import {Ship, coordsToArr} from './shipModels/ship'
+type CoOrdinates = [string, number]
 class GameBoard {
     board: Array<Ship | null>
     missedAttacks: Set<number>
@@ -14,11 +14,10 @@ class GameBoard {
         In other words, for each element of a ship column vector, S1,there must be 
         a space of 1 square with the squares of another ship column vector, Sn in the board matrix
         This function will determine and return the set of coordinate representing the surrounding spaces of a ship
-        Returns an object
         - 
         */
         for (let point of ship.points) {
-            const coord = ship.coordsToArr(point)
+            const coord = coordsToArr(point)
 
             const backs: number = coord - 10
             const fronts: number = coord + 10
@@ -41,7 +40,7 @@ class GameBoard {
     checkPlacable(ship: Ship): boolean {
         /* Check if a ship can be placed on the board */
         for (let point of ship.points) {
-            const coord = ship.coordsToArr(point)
+            const coord = coordsToArr(point)
             if (coord >= 0 && coord <= 99 && !this.surroundSpaces.has(coord)) {
                 return true
             }
@@ -52,7 +51,7 @@ class GameBoard {
     placeShip(ship: Ship) {
         if (this.checkPlacable(ship)) {
             for (let point of ship.points) {
-                const coord = ship.coordsToArr(point)
+                const coord = coordsToArr(point)
                 // add marker here o
                 this.board[coord] = ship
                 this.surroundSpaces.add(coord)
@@ -65,8 +64,28 @@ class GameBoard {
             return false
         }
     }
-    recieveAttack() {
+    recieveAttack(shot:CoOrdinates) {
+        /* Logic to recieve an attack 
+        Can either have a hit or miss as an outcome
+        
+        */
+        const coord = coordsToArr(shot)
 
+        if(this.board[coord] !== null){
+            this.board[coord]?.hit()
+            console.log("Hit!")
+            if(this.board[coord]?.isSunk()){
+                console.log("Ship sunk")
+            }
+            return true
+        } else {
+            this.missedAttacks.add(coord)
+            console.log("Miss!")
+            return false
+        }
+       
+    
+    
     }
 
 }
