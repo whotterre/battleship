@@ -4,17 +4,19 @@ class GameBoard {
     board: Array<Ship | null>
     missedAttacks: Set<number>
     surroundSpaces: Set<number>
+
     constructor() {
         this.board = new Array<Ship | null>(100).fill(null)
         this.missedAttacks = new Set<number>()
+        this.surroundSpaces = new Set<number>()
     }
 
     computeSurroundSpaces(ship: Ship) {
         /* In battleship, you can't each ship must have a square space 
         In other words, for each element of a ship column vector, S1,there must be 
         a space of 1 square with the squares of another ship column vector, Sn in the board matrix
-        This function will determine and return the set of coordinate representing the surrounding spaces of a ship
-        - 
+        This function will determine and return the set of coordinates representing the surrounding spaces of a ship
+        - @returns
         */
         for (let point of ship.points) {
             const coord = coordsToArr(point)
@@ -74,7 +76,7 @@ class GameBoard {
         if(this.board[coord] !== null){
             this.board[coord]?.hit()
             console.log("Hit!")
-            if(this.board[coord]?.isSunk()){
+            if(this.board[coord]?.sunk){
                 console.log("Ship sunk")
             }
             return true
@@ -87,6 +89,7 @@ class GameBoard {
     
     
     }
+    /* Add method to check if all ships have sunk or not here */
 
 }
 export default GameBoard
