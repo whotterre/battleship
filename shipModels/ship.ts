@@ -12,13 +12,14 @@ enum rowValues {
     "I",
     "J"
 }
-function coordsToArr(coord: CoOrdinates){
+function coordsToArr(coord: CoOrdinates):number{
     /*
     Converts 2D co-ordinates to an array index value 
     Returns computed index
     */
-    const rowComponent = coord[0]
-    return rowValues[rowComponent] * 10 + coord[1]
+    const rowComponent:string = coord[0]
+    const arrIndex = rowValues[rowComponent] * 10 + coord[1]
+    return arrIndex
 }
 class Ship {
     length: number
@@ -40,7 +41,7 @@ class Ship {
        
     }
     isSunk(){
-        /*Checks if the ship has been damaged to be sunk */
+        /* Sets the ship has been damaged to be sunk */
         if(this.hits >= this.length){
             this.sunk = true
         }
@@ -50,8 +51,8 @@ class Ship {
         Converts 2D co-ordinates to an array index value 
         Returns computed index
         */
-        const rowComponent = coord[0]
+        const rowComponent:string = coord[0]
         return rowValues[rowComponent] * 10 + coord[1]
     }
 }
-export { Ship, coordsToArr }
+export { Ship, coordsToArr, rowValues }
