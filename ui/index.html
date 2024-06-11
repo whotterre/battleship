@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="./assets/all.js"></script>
     <title>Battleship Anyone?</title>
-    <style>
-       
-    </style>
 </head>
+
 <body>
     <main>
         <div class="content"></div>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const currentScreen = 1;
             const content = document.querySelector(".content");
+            const currentScreen = 1;
 
             switch (currentScreen) {
                 case 1:
                     createFirstScreen(content);
                     break;
-                
             }
         });
 
@@ -30,7 +29,38 @@
             const firstAudio = new Audio("./assets/upbeat.mp3")
             firstAudio.loop = true
             firstAudio.play()
-            
+
+            function createHelpScreen() {
+                const sOne = document.querySelector(".sone_container")
+                sOne.style.display = "none"
+                const helpCtnr = document.createElement("div")
+                helpCtnr.classList.add("helpctr")
+                helpCtnr.classList.add("help_section");
+                helpCtnr.innerHTML = `
+                    <h2>How to Play</h2>
+                    <p>Battleship is a guessing game where you try to sink your opponent's ships before they sink yours.</p>
+                    <ul>
+                        <li><strong>Setup:</strong> Each player places their ships on a grid. Ships can be placed horizontally or vertically, but not diagonally.</li>
+                        <li><strong>Gameplay:</strong> Players take turns guessing the coordinates of their opponent's ships. If a guess hits a ship, it's marked as a hit; otherwise, it's a miss.</li>
+                        <li><strong>Winning:</strong> The game continues until one player sinks all of their opponent's ships.</li>
+                    </ul>
+                    <h2>Controls</h2>
+                    <p>Use the mouse to interact with the game grid. Click on a cell to fire at that location.</p>
+                    <button class="close_btn"><i class="fas fa-times"></i></button>
+                `;
+
+                content.append(helpCtnr);
+                content.style.width = "100%"
+                content.style.textAlign = "left"
+                function closeHelpScreen() {
+                    helpCtnr.remove();
+                    sOne.style.display = "block"; 
+                }
+
+                const closeBtn = helpCtnr.querySelector(".close_btn")
+                closeBtn.addEventListener("click", closeHelpScreen)
+            }
+
             const container = document.createElement("div");
             container.classList.add("sone_container");
             content.appendChild(container);
@@ -46,8 +76,8 @@
             const buttons = [
                 { name: "Start Game", action: () => console.log("Start Game clicked") },
                 { name: "Play as Computer", action: () => console.log("Play as Computer clicked") },
-                { name: "Play as Human", action: () => console.log("Play as Human clicked") },
-                { name: "Help", action: () => console.log("Help clicked") }
+                { name: "Play with Human", action: () => console.log("Play with Human clicked") },
+                { name: "Help", action: createHelpScreen }
             ];
 
             buttons.forEach(button => {
@@ -60,4 +90,5 @@
         }
     </script>
 </body>
+
 </html>

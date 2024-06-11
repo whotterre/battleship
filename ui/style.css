@@ -22,6 +22,7 @@ body {
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    position: relative;
 }
 h1 {
     margin-bottom: 20px;
@@ -34,6 +35,7 @@ h1 {
     flex-direction: column;
     gap: 10px;
 }
+
 .play_btn {
     padding: 10px;
     border: none;
@@ -45,4 +47,21 @@ h1 {
 }
 .play_btn:hover {
     background-color: #0056b3;
+}
+.help_section{
+    width: 100%;
+    color: white;
+}
+.close_btn {
+    position: absolute;
+    right:5rem;
+    top:2rem;
+    width:4rem;
+    height:4rem;
+    border-radius: 50%;
+    border:none;
+    background: #007BFF;
+    color:white;
+    font-size: 2rem;
+
 }
