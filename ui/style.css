@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "MPlus";
+    src: url("../ui/assets/fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf");
+}
+body {
+    font-family: MPlus, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url("../ui/assets/bg.png");
+    background-size: cover;
+}
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 20rem;
+    height:100%;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+h1 {
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color:white;
+    font-weight: bold;
+}
+.sone_options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.play_btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.play_btn:hover {
+    background-color: #0056b3;
+}

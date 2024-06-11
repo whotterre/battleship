@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Battleship Anyone?</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <main>
+        <div class="content"></div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentScreen = 1;
+            const content = document.querySelector(".content");
+
+            switch (currentScreen) {
+                case 1:
+                    createFirstScreen(content);
+                    break;
+                
+            }
+        });
+
+        function createFirstScreen(content) {
+            const firstAudio = new Audio("./assets/upbeat.mp3")
+            firstAudio.loop = true
+            firstAudio.play()
+            
+            const container = document.createElement("div");
+            container.classList.add("sone_container");
+            content.appendChild(container);
+
+            const heading = document.createElement("h1");
+            heading.innerText = "Battleship!";
+            container.append(heading);
+
+            const selectionMenu = document.createElement("div");
+            selectionMenu.classList.add("sone_options");
+            container.append(selectionMenu);
+
+            const buttons = [
+                { name: "Start Game", action: () => console.log("Start Game clicked") },
+                { name: "Play as Computer", action: () => console.log("Play as Computer clicked") },
+                { name: "Play as Human", action: () => console.log("Play as Human clicked") },
+                { name: "Help", action: () => console.log("Help clicked") }
+            ];
+
+            buttons.forEach(button => {
+                const playBtn = document.createElement("button");
+                playBtn.classList.add("play_btn");
+                playBtn.innerText = button.name;
+                playBtn.addEventListener('click', button.action);
+                selectionMenu.appendChild(playBtn);
+            });
+        }
+    </script>
+</body>
+</html>
