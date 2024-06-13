@@ -2,6 +2,7 @@
     font-family: "MPlus";
     src: url("../ui/assets/fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Regular.ttf");
 }
+
 body {
     font-family: MPlus, sans-serif;
     background-color: #f0f0f0;
@@ -29,6 +30,14 @@ h1 {
     font-size: 3rem;
     color:white;
     font-weight: bold;
+}
+h3{
+    color:white;
+}
+p {
+    color:#ccc;
+    padding:0;
+    margin: 0;
 }
 .sone_options {
     display: flex;
@@ -64,4 +73,56 @@ h1 {
     color:white;
     font-size: 2rem;
 
+}
+.header_div{
+    width:100%;
+    height:20%;
+   
+}
+.bottom_ctr {
+    width: 100%;
+   
+}
+
+.config_board{
+    border:1px solid #ccc;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+   
+}
+.config_square {
+    border:2px solid #ccc;
+    width:50px;
+    height: 50px;
+   
+}
+.row_head {
+    display: flex;
+    gap:.5rem;
+    margin-left:1.7rem;
+    width: 100%;
+    padding:none;
+    
+}
+.col_head{
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    margin-right:0.6rem;
+}
+.row_hel {
+    text-align: center;
+    color: white;
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+  
+}
+.col_hel {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+.align_bottom{
+    display: flex;
 }
