@@ -18,7 +18,7 @@ function coordsToArr(coord: CoOrdinates):number{
     Returns computed index
     */
     const rowComponent:string = coord[0]
-    const arrIndex = rowValues[rowComponent] * 10 + coord[1]
+    const arrIndex = rowValues[rowComponent as keyof typeof rowValues] * 10 + coord[1]
     return arrIndex
 }
 class Ship {
@@ -52,7 +52,7 @@ class Ship {
         Returns computed index
         */
         const rowComponent:string = coord[0]
-        return rowValues[rowComponent] * 10 + coord[1]
+        return rowValues[rowComponent as keyof typeof rowValues] * 10 + coord[1]
     }
 }
 export { Ship, coordsToArr, rowValues }
