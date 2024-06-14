@@ -149,6 +149,18 @@ function createFirstScreen(content) {
             const boardItem = document.createElement("div")
             boardItem.classList.add("config_square")
             board.append(boardItem)
+            boardItem.addEventListener('dragover', (e) => {
+                e.preventDefault()
+            })
+            boardItem.addEventListener('drop', (e) => {
+                e.preventDefault()
+                const shipType = e.dataTransfer.getData('text/plain')
+                const shipElement = document.querySelector(`[data-type="${shipType}"]`);
+                e.target.append(shipElement)
+                shipElement.style.position = 'absolute'
+                shipElement.style.top = `${e.target.offsetTop}px`;
+                shipElement.style.left = `${e.target.offsetLeft}px`
+            })
         }
         const limits = {
             "battleship": 1,
