@@ -126,3 +126,24 @@ p {
 .align_bottom{
     display: flex;
 }
+.ship_holder {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 20px;
+}
+
+/* Style for the ship */
+.ship {
+    display: flex;
+    flex-direction: column;
+    cursor: grab; 
+}
+
+/* Style for individual squares in the ship */
+.square {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    margin: 2px;
+}
