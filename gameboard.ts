@@ -1,5 +1,6 @@
 import {Ship, coordsToArr} from './shipModels/ship'
 type CoOrdinates = [string, number]
+
 class GameBoard {
     board: Array<Ship | null>
     missedAttacks: Set<number>
@@ -12,11 +13,11 @@ class GameBoard {
     }
 
     computeSurroundSpaces(ship: Ship) {
-        /* In battleship, you can't each ship must have a square space 
+        /* In battleship, each ship must have occupy a square space
         In other words, for each element of a ship column vector, S1,there must be 
         a space of 1 square with the squares of another ship column vector, Sn in the board matrix
         This function will determine and return the set of coordinates representing the surrounding spaces of a ship
-        - @returns
+      
         */
         for (let point of ship.points) {
             const coord = coordsToArr(point)
@@ -50,6 +51,7 @@ class GameBoard {
         }
         return false
     }
+
     placeShip(ship: Ship) {
         if (this.checkPlacable(ship)) {
             for (let point of ship.points) {
@@ -66,6 +68,7 @@ class GameBoard {
             return false
         }
     }
+
     recieveAttack(shot:CoOrdinates) {
         /* Logic to recieve an attack 
         Can either have a hit or miss as an outcome
@@ -90,6 +93,6 @@ class GameBoard {
     
     }
     /* Add method to check if all ships have sunk or not here */
-
 }
+
 export default GameBoard
